@@ -27,3 +27,6 @@ Lesson4
 
 Lesson5
 1、logback配置和使用
+
+Lesson6
+1、shop的新增及更新
