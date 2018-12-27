@@ -5,6 +5,7 @@ Lesson1
 3、修改dynamic web module 3.1  
     3.1 ./setting/org.eclipse.wst.common.project.facet.core.xml的jst.web  
     3.2 web.xml头部信息  
+    
 Lesson2
 1、创建实体类及数据库表
   tb_area
@@ -16,5 +17,10 @@ Lesson2
   tb_product_category
   tb_product
   tb_product_img
+  
 Lesson3
 1、pom配置
+
+Lesson4
+1、SSM搭建
+2、SSM验证
