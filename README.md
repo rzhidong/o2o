@@ -1,5 +1,5 @@
 # o2o  
-lesson1  
+Lesson1  
 1、pom增加编译版本  
 2、增加test/resources并指定输出文件夹  
 3、修改dynamic web module 3.1  
