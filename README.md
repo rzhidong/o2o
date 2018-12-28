@@ -40,3 +40,7 @@ Lesson8
 1、shop注册的service和controller实现
 2、HttpServletRequestUtil
 https://github.com/FasterXML/jackson-databind
+
+Lesson9
+1、商铺注册前端SUI实现
+2、店铺区域、类别信息初始化
