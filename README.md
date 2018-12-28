@@ -29,8 +29,14 @@ Lesson5
 1、logback配置和使用
 
 Lesson6
-1、shop的新增及更新
+1、[shop的新增及更新]dao实现
 
 Lesson7
 1、thumbnailato压缩、加水印
 2、PathUtil、ImageUtil
+https://github.com/coobird/thumbnailator/wiki/Examples
+
+Lesson8
+1、shop注册的service和controller实现
+2、HttpServletRequestUtil
+https://github.com/FasterXML/jackson-databind
