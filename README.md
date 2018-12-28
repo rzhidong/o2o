@@ -44,3 +44,7 @@ https://github.com/FasterXML/jackson-databind
 Lesson9
 1、商铺注册前端SUI实现
 2、店铺区域、类别信息初始化
+
+Lesson10
+1、Kaptcha验证码
+2、店铺注册前后端联调

@@ -30,25 +30,25 @@ public class ImageUtil {
 		// System.out.println(System.getProperty("user.dir"));
 		// https://github.com/coobird/thumbnailator/wiki/Examples
 
-		String thumPath = System.getProperty("user.dir") + "\\src\\main\\resources\\Thumbnailator\\";
+		String thumPath = System.getProperty("user.dir") + "\\src\\main\\resources\\";
 
-		File inputfile = new File(thumPath + "java.jpg");
+		File inputfile = new File(thumPath + "Thumbnailator\\java.jpg");
 		File markFile = new File(thumPath + "watermark.jpg");
 
 		// String basePath =
 		// Thread.currentThread().getContextClassLoader().getResource("").getPath();
 		File imgFile = new File(basePath + "/Thumbnailator/java.jpg");
-		File watermarkFile = new File(basePath + "/Thumbnailator/watermark.jpg");
+		File watermarkFile = new File(basePath + "watermark.jpg");
 
 		try {
 			Thumbnails.of(inputfile).size(200, 200).watermark(Positions.BOTTOM_RIGHT, ImageIO.read(markFile), 0.25f)
-					.outputQuality(0.8f).toFile(thumPath + "java_new.jpg");
+					.outputQuality(0.8f).toFile(thumPath + "/Thumbnailator/java_new.jpg");
 
 			Thumbnails.of(imgFile).size(200, 200).watermark(Positions.BOTTOM_RIGHT, ImageIO.read(watermarkFile), 0.25f)
-					.outputQuality(0.8f).toFile(basePath + "/Thumbnailator/java_new.jpg");
+					.outputQuality(0.8f).toFile(basePath + "java_new.jpg");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 	
@@ -94,11 +94,12 @@ public class ImageUtil {
 		// 获取文件要保存到的目标路径
 		File dest = new File(PathUtil.getImgBasePath() + relativeAddr);
 		logger.debug("current complete addr is :" + PathUtil.getImgBasePath() + relativeAddr);
+		logger.debug("watermark location: " + basePath + "watermark.jpg");
 		// 调用Thumbnails生成带有水印的图片
 		try {
 			Thumbnails.of(thumbnailInputStream).size(200, 200)
 					.watermark(Positions.BOTTOM_RIGHT,
-							ImageIO.read(new File(basePath + "/Thumbnailator/watermark.jpg")), 0.25f)
+							ImageIO.read(new File(basePath + "watermark.jpg")), 0.25f)
 					.outputQuality(0.8f).toFile(dest);
 		} catch (Exception e) {
 			logger.error(e.toString());

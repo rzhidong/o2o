@@ -27,6 +27,7 @@ import com.o2o.enums.ShopStateEnum;
 import com.o2o.service.AreaService;
 import com.o2o.service.ShopCategoryService;
 import com.o2o.service.ShopService;
+import com.o2o.util.CodeUtil;
 import com.o2o.util.HttpServletRequestUtil;
 
 @Controller
@@ -66,6 +67,11 @@ public class ShopManagementController {
 	@ResponseBody
 	private Map<String, Object> registerShop(HttpServletRequest request) {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
+		if (!CodeUtil.checkVerifyCode(request)) {
+			modelMap.put("success", false);
+			modelMap.put("errMsg", "输入了错误的验证码");
+			return modelMap;
+		}
 		// 1.接收并转化相应的参数，包括店铺信息以及图片信息
 		String shopStr = HttpServletRequestUtil.getString(request, "shopStr");
 		ObjectMapper mapper = new ObjectMapper();
@@ -98,6 +104,8 @@ public class ShopManagementController {
 			//Session TODO
 			owner.setUserId(1L);
 			shop.setOwner(owner);
+			shop.setPriority(1);
+			shop.setAdvice("审核中");
 			
 			//新建任意文件
 //			File shopImgFile = new File(PathUtil.getImgBasePath() + ImageUtil.getRandomFileName());
