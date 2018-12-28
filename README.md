@@ -30,3 +30,7 @@ Lesson5
 
 Lesson6
 1、shop的新增及更新
+
+Lesson7
+1、thumbnailato压缩、加水印
+2、PathUtil、ImageUtil
