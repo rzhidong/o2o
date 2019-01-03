@@ -48,3 +48,7 @@ Lesson9
 Lesson10
 1、Kaptcha验证码
 2、店铺注册前后端联调
+
+Lesson11
+1、mysql主从配置，读写分离
+
