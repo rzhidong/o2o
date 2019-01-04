@@ -51,7 +51,7 @@ public class ImageUtil {
 			System.out.println(e.getMessage());
 		}
 	}
-	
+
 	/**
 	 * 将CommonsMultipartFile转换成File类
 	 * 
@@ -71,8 +71,7 @@ public class ImageUtil {
 		}
 		return newFile;
 	}
-	
-	
+
 	/**
 	 * 处理缩略图，并返回新生成图片的相对值路径
 	 * 
@@ -82,7 +81,7 @@ public class ImageUtil {
 	 *            图片存储路径
 	 * @return
 	 */
-	public static String generateThumbnail(InputStream thumbnailInputStream,String fileName, String targetAddr) {
+	public static String generateThumbnail(InputStream thumbnailInputStream, String fileName, String targetAddr) {
 		// 获取不重复的随机名
 		String realFileName = getRandomFileName();
 		// 获取文件的扩展名如png,jpg等
@@ -98,8 +97,7 @@ public class ImageUtil {
 		// 调用Thumbnails生成带有水印的图片
 		try {
 			Thumbnails.of(thumbnailInputStream).size(200, 200)
-					.watermark(Positions.BOTTOM_RIGHT,
-							ImageIO.read(new File(basePath + "watermark.jpg")), 0.25f)
+					.watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "watermark.jpg")), 0.25f)
 					.outputQuality(0.8f).toFile(dest);
 		} catch (Exception e) {
 			logger.error(e.toString());
@@ -146,5 +144,25 @@ public class ImageUtil {
 		String nowTimeStr = sDateFormat.format(new Date());
 
 		return nowTimeStr + rannum;
+	}
+
+	/**
+	 * storePath是文件的路径还是目录的路径
+	 * 如果storePath是文件路径则删除该文件
+	 * 如果storePath是目录路径则删除该目录下的所有文件
+	 * 
+	 * @param storePath
+	 */
+	public static void deleteFileOrPath(String storePath) {
+		File fileOrPath = new File(PathUtil.getImgBasePath() + storePath);
+		if (fileOrPath.exists()) {
+			if (fileOrPath.isDirectory()) {
+				File[] files = fileOrPath.listFiles();
+				for (int i = 0; i < files.length; i++) {
+					files[i].delete();
+				}
+			}
+			fileOrPath.delete();
+		}
 	}
 }

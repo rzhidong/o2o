@@ -52,3 +52,8 @@ Lesson10
 Lesson11
 1、mysql主从配置，读写分离
 
+Lesson12
+1、店铺编辑dao、service、controller开发,前端开发调试
+2、店铺注册session
+3、店铺列表dao、service、controller开发,前端开发调试
+

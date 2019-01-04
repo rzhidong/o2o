@@ -88,4 +88,13 @@ public class ShopCategory {
 		this.parent = parent;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopCategory [shopCategoryId=" + shopCategoryId + ", shopCategoryName=" + shopCategoryName
+				+ ", shopCategoryDesc=" + shopCategoryDesc + ", shopCategoryImg=" + shopCategoryImg + ", priority="
+				+ priority + ", createTime=" + createTime + ", lastEditTime=" + lastEditTime + ", parent=" + parent
+				+ "]";
+	}
+	
+
 }

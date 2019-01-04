@@ -2,6 +2,7 @@ package com.o2o.service.impl;
 
 import java.io.InputStream;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import com.o2o.enums.ShopStateEnum;
 import com.o2o.exception.ShopOperationException;
 import com.o2o.service.ShopService;
 import com.o2o.util.ImageUtil;
+import com.o2o.util.PageCalculator;
 import com.o2o.util.PathUtil;
 
 @Service
@@ -24,7 +26,7 @@ public class ShopServiceImpl implements ShopService {
 
 	@Override
 	@Transactional
-	public ShopExecution addShop(Shop shop, InputStream shopImgInputStream, String fileName) {
+	public ShopExecution addShop(Shop shop, InputStream shopImgInputStream, String fileName) throws ShopOperationException{
 		// 空值判断
 		if (shop == null) {
 			return new ShopExecution(ShopStateEnum.NULL_SHOP);
@@ -67,6 +69,64 @@ public class ShopServiceImpl implements ShopService {
 		String shopImgAddr = ImageUtil.generateThumbnail(shopImgInputStream, fileName, dest);
 		shop.setShopImg(shopImgAddr);
 
+	}
+
+	@Override
+	public Shop getByShopId(long shopId) {
+		// TODO Auto-generated method stub
+		return shopDao.queryByShopId(shopId);
+	}
+
+	@Override
+	@Transactional
+	public ShopExecution modifyShop(Shop shop, InputStream shopImgInputStream,String fileName) throws ShopOperationException {
+		// TODO Auto-generated method stub
+		if (shop == null || shop.getShopId() == null) {
+			System.out.println("modifyShop..");
+			return new ShopExecution(ShopStateEnum.NULL_SHOP);
+		}else {
+			try {
+				//1、判断是否需要处理图片
+				if (shopImgInputStream != null && fileName != null && !"".equals(fileName)) {
+					Shop tempShop = shopDao.queryByShopId(shop.getShopId());
+					if (tempShop.getShopImg() != null) {
+						ImageUtil.deleteFileOrPath(tempShop.getShopImg());
+					}
+					addShopImg(shop, shopImgInputStream, fileName);
+				}
+				//2、更新店铺信息
+				shop.setLastEditTime(new Date());
+				int effectedNum = shopDao.updateShop(shop);
+				if (effectedNum <= 0){
+					return new ShopExecution(ShopStateEnum.INNER_ERROR);
+				}else {
+					shop = shopDao.queryByShopId(shop.getShopId());
+					return new ShopExecution(ShopStateEnum.SUCCESS, shop);
+				}
+			} catch (Exception e) {
+				throw new ShopOperationException("modifyShop error:"+e.getMessage());
+			}
+		}
+		
+	}
+
+	@Override
+	public ShopExecution getShopList(Shop shopCondition, int pageIndex, int pageSize) {
+		// TODO Auto-generated method stub
+		//将页码转换成行码
+		int rowIndex = PageCalculator.calculateRowIndex(pageIndex, pageSize);
+		//依据查询条件，调用dao层返回相关的店铺列表
+		List<Shop> shopList = shopDao.queryShopList(shopCondition, rowIndex, pageSize);
+		//依据相同的查询条件，返回店铺总数
+		int count = shopDao.queryShopCount(shopCondition);
+		ShopExecution shopExecution = new ShopExecution();
+		if (shopList != null) {
+			shopExecution.setCount(count);
+			shopExecution.setShopList(shopList);
+		}else {
+			shopExecution.setState(ShopStateEnum.INNER_ERROR.getState());
+		}
+		return shopExecution;
 	}
 
 }

@@ -25,6 +25,11 @@ function changeVerifyCode(img) {
 	img.src = "../Kaptcha?" + Math.floor(Math.random() * 100);
 }
 
+/**
+ *	从URL里获取参数的值
+ * @param name
+ * @returns
+ */
 function getQueryString(name) {
 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
 	var r = window.location.search.substr(1).match(reg);

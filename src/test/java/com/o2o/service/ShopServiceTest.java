@@ -7,7 +7,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Date;
+import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -25,6 +27,7 @@ public class ShopServiceTest extends BaseTest{
 	private ShopService shopService;
 	
 	@Test
+	@Ignore
 	public void testAddShop() throws FileNotFoundException {
 		Shop shop = new Shop();
 		PersonInfo owner = new PersonInfo();
@@ -50,6 +53,32 @@ public class ShopServiceTest extends BaseTest{
 		InputStream shopImgInputStream = new FileInputStream(shopImg);
 		ShopExecution shopExecution = shopService.addShop(shop, shopImgInputStream,shopImg.getName());
 		assertEquals(ShopStateEnum.CHECK.getState(), shopExecution.getState());
+	}
+	
+	@Test
+	@Ignore
+	public void testGetByShopId() {
+		System.out.println(shopService.getByShopId(1L));
+	}
+	
+	@Test
+	public void testModifyShop()throws Exception {
+		Shop shop = shopService.getByShopId(24L);
+		System.out.println(shop);
+		shop.setShopName("修改后的店铺名称");
+		File shopImg = new File(System.getProperty("user.dir") + "\\src\\main\\resources\\Thumbnailator\\java.jpg");
+		InputStream shopImgInputStream = new FileInputStream(shopImg);
+		ShopExecution shopExecution = shopService.modifyShop(shop, shopImgInputStream, shopImg.getName());
+		System.out.println(shopExecution.getStateInfo());
+	}
+	
+	@Test
+	public void testGetShopList() {
+		Shop shopCondition = new Shop();
+		shopCondition.setShopName("te");
+		ShopExecution se = shopService.getShopList(shopCondition, 2, 5);
+		List<Shop> shopList = se.getShopList();
+		System.out.println(se+"\n"+shopList.size());
 	}
 
 }
