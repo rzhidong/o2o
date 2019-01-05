@@ -1,6 +1,5 @@
 package com.o2o.web.shopadmin;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -163,7 +162,7 @@ public class ShopManagementController {
 					modelMap.put("seccess", false);
 					modelMap.put("errMsg", shopExecution.getStateInfo());
 				}
-			} catch (IOException e) {
+			} catch (Exception e) {
 				modelMap.put("success", false);
 				modelMap.put("errMsg", e.getMessage());
 			}
@@ -274,7 +273,7 @@ public class ShopManagementController {
 					modelMap.put("seccess", false);
 					modelMap.put("errMsg", shopExecution.getStateInfo());
 				}
-			} catch (IOException e) {
+			} catch (Exception e) {
 				modelMap.put("success", false);
 				modelMap.put("errMsg", e.getMessage());
 			}

@@ -58,5 +58,5 @@ Lesson12
 3、店铺列表dao、service、controller开发,前端开发调试
 
 Lesson13
-1、商品列表dao、service、controller开发，前端开发调试
-
+1、商品类别列表dao、service、controller开发，前端开发调试
+2、商品类别批量添加dao、service、controller开发,前端开发调试
