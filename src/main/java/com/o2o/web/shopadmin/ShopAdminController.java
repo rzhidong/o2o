@@ -21,14 +21,17 @@ public class ShopAdminController {
 	
 	@RequestMapping("/shoplist")
 	public String shopList() {
-		// 转发至店铺注册/编辑页面
 		return "shop/shoplist";
 	}
 	
 	@RequestMapping("/shopmanagement")
 	public String shopManagement() {
-		// 转发至店铺注册/编辑页面
 		return "shop/shopmanagement";
+	}
+	
+	@RequestMapping("/productcategorymanagement")
+	public String productCategoryManagement() {
+		return "shop/productcategorymanagement";
 	}
 
 }

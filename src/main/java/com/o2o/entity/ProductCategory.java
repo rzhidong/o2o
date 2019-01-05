@@ -58,4 +58,11 @@ public class ProductCategory {
 		this.createTime = createTime;
 	}
 
+	@Override
+	public String toString() {
+		return "ProductCategory [productCategoryId=" + productCategoryId + ", shopId=" + shopId
+				+ ", productCategoryName=" + productCategoryName + ", priority=" + priority + ", createTime="
+				+ createTime + "]";
+	}
+
 }

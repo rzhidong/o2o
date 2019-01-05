@@ -57,3 +57,6 @@ Lesson12
 2、店铺注册session
 3、店铺列表dao、service、controller开发,前端开发调试
 
+Lesson13
+1、商品列表dao、service、controller开发，前端开发调试
+
