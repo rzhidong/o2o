@@ -61,3 +61,7 @@ Lesson13
 1、商品类别列表dao、service、controller开发，前端开发调试
 2、商品类别批量添加dao、service、controller开发,前端开发调试
 3、商品类别(TODO商品)删除dao、service、controller开发,前端开发调试
+
+Lesson14
+1、商品添加dao、service、controller开发，前端开发调试
+2、图片处理重构(ImageHolder)

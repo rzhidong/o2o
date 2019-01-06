@@ -1,7 +1,7 @@
 package com.o2o.service;
 
-import java.io.InputStream;
 
+import com.o2o.dto.ImageHolder;
 import com.o2o.dto.ShopExecution;
 import com.o2o.entity.Shop;
 import com.o2o.exception.ShopOperationException;
@@ -16,7 +16,7 @@ public interface ShopService {
 	 * @param fileName 图片名称
 	 * @return
 	 */
-	ShopExecution addShop(Shop shop,InputStream shopImgInputStream,String fileName) throws ShopOperationException;
+	ShopExecution addShop(Shop shop,ImageHolder thumbnail) throws ShopOperationException;
 	
 	/**
 	 * 通过店铺Id获取店铺信息
@@ -34,7 +34,7 @@ public interface ShopService {
 	 * @return
 	 * @throws ShopOperationException
 	 */
-	ShopExecution modifyShop(Shop shop, InputStream shopImgInputStream,String fileName) throws ShopOperationException;
+	ShopExecution modifyShop(Shop shop, ImageHolder thumbnail) throws ShopOperationException;
 	
 	/**
 	 * 根据shopCondition分页返回相应店铺列表

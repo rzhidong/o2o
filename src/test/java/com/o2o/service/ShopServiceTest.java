@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.Ignore;
@@ -14,6 +13,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.o2o.BaseTest;
+import com.o2o.dto.ImageHolder;
 import com.o2o.dto.ShopExecution;
 import com.o2o.entity.Area;
 import com.o2o.entity.PersonInfo;
@@ -51,7 +51,8 @@ public class ShopServiceTest extends BaseTest{
 		
 		File shopImg = new File(System.getProperty("user.dir") + "\\src\\main\\resources\\Thumbnailator\\java.jpg");
 		InputStream shopImgInputStream = new FileInputStream(shopImg);
-		ShopExecution shopExecution = shopService.addShop(shop, shopImgInputStream,shopImg.getName());
+		ImageHolder thumbnail = new ImageHolder(shopImg.getName(), shopImgInputStream);
+		ShopExecution shopExecution = shopService.addShop(shop, thumbnail);
 		assertEquals(ShopStateEnum.CHECK.getState(), shopExecution.getState());
 	}
 	
@@ -66,9 +67,10 @@ public class ShopServiceTest extends BaseTest{
 		Shop shop = shopService.getByShopId(24L);
 		System.out.println(shop);
 		shop.setShopName("修改后的店铺名称");
-		File shopImg = new File(System.getProperty("user.dir") + "\\src\\main\\resources\\Thumbnailator\\java.jpg");
-		InputStream shopImgInputStream = new FileInputStream(shopImg);
-		ShopExecution shopExecution = shopService.modifyShop(shop, shopImgInputStream, shopImg.getName());
+		//File shopImg = new File(System.getProperty("user.dir") + "\\src\\main\\resources\\Thumbnailator\\java.jpg");
+		//InputStream shopImgInputStream = new FileInputStream(shopImg);
+		//ImageHolder thumbnail = new ImageHolder(shopImg.getName(), shopImgInputStream);
+		ShopExecution shopExecution = shopService.modifyShop(shop, null);
 		System.out.println(shopExecution.getStateInfo());
 	}
 	

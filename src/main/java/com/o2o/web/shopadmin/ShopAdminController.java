@@ -33,5 +33,12 @@ public class ShopAdminController {
 	public String productCategoryManagement() {
 		return "shop/productcategorymanagement";
 	}
+	
+	@RequestMapping("/productoperation")
+	public String productOperation() {
+		// 转发至商品添加/编辑页面
+		return "shop/productoperation";
+	}
+	
 
 }

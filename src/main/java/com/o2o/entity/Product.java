@@ -150,4 +150,13 @@ public class Product {
 		this.shop = shop;
 	}
 
+	@Override
+	public String toString() {
+		return "Product [productId=" + productId + ", productName=" + productName + ", productDesc=" + productDesc
+				+ ", imgAddr=" + imgAddr + ", normalPrice=" + normalPrice + ", promotionPrice=" + promotionPrice
+				+ ", priority=" + priority + ", point=" + point + ", createTime=" + createTime + ", lastEditTime="
+				+ lastEditTime + ", enableStatus=" + enableStatus + ", productImgList=" + productImgList
+				+ ", productCategory=" + productCategory + ", shop=" + shop + "]";
+	}
+
 }
