@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.o2o.BaseTest;
 import com.o2o.entity.Product;
 import com.o2o.entity.ProductCategory;
+import com.o2o.entity.ProductImg;
 import com.o2o.entity.Shop;
 
 public class ProductDaoTest extends BaseTest{
@@ -63,5 +64,28 @@ public class ProductDaoTest extends BaseTest{
 		assertEquals(1, effectedNum);
 		effectedNum = productDao.insertProduct(product3);
 		assertEquals(1, effectedNum);
+	}
+	
+	@Test
+	public void testQueryProductById() {
+		Product product = productDao.queryProductById(15L);
+		System.out.println(product);
+		for (ProductImg productImg : product.getProductImgList()) {
+			System.out.println(productImg);
+		}
+		System.out.println(product.getShop());
+		System.out.println(product.getProductCategory());
+	}
+	
+	@Test
+	public void testUpdateProduct() {
+		Product product = new Product();
+		product.setProductId(16L);
+		product.setLastEditTime(new Date());
+		Shop shop = new Shop();
+		shop.setShopId(6L);
+		product.setShop(shop);
+		product.setEnableStatus(1);
+		System.out.println(productDao.updateProduct(product));
 	}
 }
