@@ -15,13 +15,18 @@ public class ShopCategoryDaoTest extends BaseTest{
 	
 	@Test
 	public void testQueryShopCategory() {
-		List<ShopCategory> list = shopCategoryDao.queryShopCategory(new ShopCategory());
-		System.out.println(list);
+		//获取一级列表
+		List<ShopCategory> list1 = shopCategoryDao.queryShopCategory(null);
+		System.out.println(list1);
+		
+		List<ShopCategory> list2 = shopCategoryDao.queryShopCategory(new ShopCategory());
+		System.out.println(list2);
+		
 		ShopCategory testCategory = new ShopCategory();
 		ShopCategory parentCategory = new ShopCategory();
 		parentCategory.setShopCategoryId(1L);
 		testCategory.setParent(parentCategory);
-		System.out.println(shopCategoryDao.queryShopCategory(testCategory).get(0).getShopCategoryName());
+		System.out.println(shopCategoryDao.queryShopCategory(testCategory));
 	}
 
 }

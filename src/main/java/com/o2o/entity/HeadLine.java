@@ -87,4 +87,11 @@ public class HeadLine {
 		this.lastEditTime = lastEditTime;
 	}
 
+	@Override
+	public String toString() {
+		return "HeadLine [lineId=" + lineId + ", lineName=" + lineName + ", lineLink=" + lineLink + ", lineImg="
+				+ lineImg + ", priority=" + priority + ", enableStatus=" + enableStatus + ", createTime=" + createTime
+				+ ", lastEditTime=" + lastEditTime + "]";
+	}
+	
 }
