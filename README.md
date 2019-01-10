@@ -68,3 +68,5 @@ Lesson14
 
 Lesson15
 1、商品编辑dao、service、controller开发及图片处理
+2、商品列表dao、service、controller开发，前端开发调试
+3、解除商品与商品类别的关联实现

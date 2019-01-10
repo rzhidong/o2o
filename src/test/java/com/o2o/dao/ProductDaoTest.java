@@ -3,6 +3,7 @@ package com.o2o.dao;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,5 +88,23 @@ public class ProductDaoTest extends BaseTest{
 		product.setShop(shop);
 		product.setEnableStatus(1);
 		System.out.println(productDao.updateProduct(product));
+	}
+	
+	@Test
+	public void testQueryProductList() {
+		Product productCondition = new Product();
+		productCondition.setProductName("商品");
+		List<Product> productList = productDao.queryProductList(productCondition, 0, 5);
+		for (Product product : productList) {
+			System.out.println(product);
+		}
+		System.out.println(productDao.queryProductCount(productCondition));
+		
+	}
+	
+	@Test
+	public void testUpdateProductCategoryToNull() {
+		int effectedNum = productDao.updateProductCategoryToNull(1L);
+		System.out.println(effectedNum);
 	}
 }
