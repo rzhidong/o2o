@@ -131,6 +131,14 @@
 				#{shopCondition.shopCategory.shopCategoryId}
 			</if>
 			<if
+				test="shopCondition.shopCategory != null and
+				shopCondition.shopCategory.parent != null and
+				shopCondition.shopCategory.parent.shopCategoryId != null">
+				and s.shop_category_id in(SELECT shop_category_id FROM
+				tb_shop_category
+				WHERE parent_id = #{shopCondition.shopCategory.parent.shopCategoryId})
+			</if>
+			<if
 				test="shopCondition.area != null and 
 				shopCondition.area.areaId != null">
 				and s.area_id = #{shopCondition.area.areaId}
@@ -157,7 +165,7 @@
 		s.priority DESC
 		LIMIT #{rowIndex},#{pageSize};
 	</select>
-	
+
 	<select id="queryShopCount" resultType="int">
 		SELECT
 		count(1)
@@ -171,6 +179,14 @@
 				shopCondition.shopCategory.shopCategoryId != null">
 				and s.shop_category_id =
 				#{shopCondition.shopCategory.shopCategoryId}
+			</if>
+			<if
+				test="shopCondition.shopCategory != null and
+				shopCondition.shopCategory.parent != null and
+				shopCondition.shopCategory.parent.shopCategoryId != null">
+				and s.shop_category_id in(SELECT shop_category_id FROM
+				tb_shop_category
+				WHERE parent_id = #{shopCondition.shopCategory.parent.shopCategoryId})
 			</if>
 			<if
 				test="shopCondition.area != null and 

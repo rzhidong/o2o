@@ -17,5 +17,15 @@ public class FrontendController {
 	private String index() {
 		return "frontend/index";
 	}
+	
+	/**
+	 * 商品列表页路由
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/shoplist", method = RequestMethod.GET)
+	private String showShopList() {
+		return "frontend/shoplist";
+	}
 
 }

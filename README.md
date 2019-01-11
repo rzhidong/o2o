@@ -72,5 +72,6 @@ Lesson15
 3、解除商品与商品类别的关联实现
 
 Lesson16
-1、首页开发dao、service/controller开发
+1、首页开发dao、service、controller开发
 2、<Context docBase="D:/image/upload" path="/upload"/>
+3、商店列表页dao、service、controller开发

@@ -87,6 +87,21 @@ public class ShopDaoTest extends BaseTest {
 			System.out.println(shop + "\n" + area + "\n" + owner + "\n" + shopCategory);
 		}
 		System.out.println(shopDao.queryShopCount(shopCondition));
+		
+		System.out.println("--------------------");
+		shopCondition.setShopName(null);
+		ShopCategory childCategory = new ShopCategory();
+		ShopCategory parentCategory = new ShopCategory();
+		parentCategory.setShopCategoryId(1L);
+		childCategory.setParent(parentCategory);
+		shopCondition.setShopCategory(childCategory);
+		List<Shop> shopList = shopDao.queryShopList(shopCondition, 0, 99);
+		if (shopList!= null) {
+			for (Shop shop : shopList) {
+				System.out.println(shop);
+			}
+		}
+		System.out.println(shopDao.queryShopCount(shopCondition));
 	}
 
 }
