@@ -75,3 +75,4 @@ Lesson16
 1、首页开发dao、service、controller开发
 2、<Context docBase="D:/image/upload" path="/upload"/>
 3、商店列表页dao、service、controller开发
+4、店铺详情页dao、service、controller开发
