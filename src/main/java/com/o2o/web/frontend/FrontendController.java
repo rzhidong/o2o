@@ -37,5 +37,15 @@ public class FrontendController {
 	private String showShopDetail() {
 		return "frontend/shopdetail";
 	}
+	
+	/**
+	 * 商品详情页路由
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/productdetail", method = RequestMethod.GET)
+	private String showProductDetail() {
+		return "frontend/productdetail";
+	}
 
 }
