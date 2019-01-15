@@ -38,6 +38,12 @@ $(function() {
 								// 获取原本的商品类别以及该店铺的所有商品类别列表
 								var optionHtml = '';
 								var optionArr = data.productCategoryList;
+								if(optionArr == ""){
+									$.toast('请先增加目录(商品目录)');
+									setTimeout(function (){
+										window.location.href = "/o2o/shopadmin/productcategorymanagement";
+									}, 3000);
+								}
 								var optionSelected;
 								if (product.productCategory == null){
 									optionSelected = data.productCategoryList[0].productCategoryId;
@@ -68,6 +74,7 @@ $(function() {
 		$.getJSON(categoryUrl, function(data) {
 			if (data.success) {
 				var productCategoryList = data.data;
+				console.info(productCategoryList);
 				var optionHtml = '';
 				productCategoryList.map(function(item, index) {
 					optionHtml += '<option data-value="'
@@ -75,6 +82,12 @@ $(function() {
 							+ item.productCategoryName + '</option>';
 				});
 				$('#category').html(optionHtml);
+			}else{
+				$.toast('请先增加目录(商品目录)');
+				setTimeout(function (){
+					window.location.href = "/o2o/shopadmin/productcategorymanagement";
+				}, 3000);
+				//window.location.href = "/o2o/shopadmin/productcategorymanagement";
 			}
 		});
 	}

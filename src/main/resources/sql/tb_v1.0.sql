@@ -302,6 +302,8 @@ INSERT INTO `tb_product` VALUES (1,'大黄人','我是大黄人','upload/images/
 /*!40000 ALTER TABLE `tb_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
+ALTER TABLE tb_product add point int(255);
+
 --
 -- Table structure for table `tb_product_img`
 --

@@ -6,7 +6,7 @@
 
 	<!-- 配置整合mybatis过程 -->
 	<!-- 1.配置数据库相关参数properties的属性：${url} -->
-	<context:property-placeholder location="classpath: jdbc.properties" />
+	<context:property-placeholder location="classpath:jdbc.properties" />
 
 	<!-- 2.数据库连接池 -->
 	<bean id="abstractDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"

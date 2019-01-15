@@ -96,4 +96,9 @@ $(function() {
 					});
 				});
 			});
+	
+	// 提交按钮的事件响应，分别对店铺注册和编辑操作做不同响应
+	$('#back').click(function(){
+		window.location.href = "/o2o/shopadmin/shopmanagement";
+	});
 });

@@ -15,6 +15,8 @@ $(function(){
 	var shopInfoUrl = "/o2o/shopadmin/getshopbyid?shopId=" + shopId;
 	// 编辑店铺信息的URL
 	var editShopUrl = '/o2o/shopadmin/modifyshop';
+	//返回url
+	var backUrl = '/o2o/shopadmin/shopmanagement?shopId='+ shopId;
 	
 	// 判断是编辑操作还是注册操作
 	if(isEdit){
@@ -137,4 +139,10 @@ $(function(){
 			}
 		});
 	});
+	
+	// 提交按钮的事件响应，分别对店铺注册和编辑操作做不同响应
+	$('#back').click(function(){
+		window.location.href = backUrl;
+	});
+	
 })
