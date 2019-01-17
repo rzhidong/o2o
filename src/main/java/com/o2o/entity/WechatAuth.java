@@ -48,4 +48,10 @@ public class WechatAuth {
 		this.personInfo = personInfo;
 	}
 
+	@Override
+	public String toString() {
+		return "WechatAuth [wechatAuthId=" + wechatAuthId + ", openId=" + openId + ", createTime=" + createTime
+				+ ", personInfo=" + personInfo + "]";
+	}
+
 }

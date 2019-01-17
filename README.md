@@ -76,3 +76,7 @@ Lesson16
 2、<Context docBase="D:/image/upload" path="/upload"/>
 3、商店列表页dao、service、controller开发
 4、店铺详情页dao、service、controller开发
+
+Lesson17
+1、微信接口配置
+2、微信登录账号创建
