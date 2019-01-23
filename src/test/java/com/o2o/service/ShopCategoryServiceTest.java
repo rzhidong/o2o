@@ -13,6 +13,15 @@ public class ShopCategoryServiceTest extends BaseTest{
 	
 	@Test
 	public void testGetShopCategoryList() {
-		System.out.println(shopCategoryService.getShopCategoryList(new ShopCategory()));
+		ShopCategory shopCategoryCondition = new ShopCategory();
+		System.out.println(shopCategoryService.getShopCategoryList(shopCategoryCondition));
+		
+		System.out.println(shopCategoryService.getShopCategoryList(null));
+		
+		ShopCategory testCategory = new ShopCategory();
+		ShopCategory parentCategory = new ShopCategory();
+		parentCategory.setShopCategoryId(12L);
+		testCategory.setParent(parentCategory);
+		System.out.println(shopCategoryService.getShopCategoryList(testCategory));
 	}
 }

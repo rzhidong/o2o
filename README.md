@@ -84,3 +84,6 @@ Lesson17
 Lesson18
 1、PropertyPlaceholderConfigurer实现对称加密
 2、数据库明文密码加密（DES对称加密算法即：加密和解密使用相同密钥的算法）
+
+Lesson19
+1、redis缓存

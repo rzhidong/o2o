@@ -1,6 +1,5 @@
 package com.o2o.service;
 
-import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
@@ -15,11 +14,15 @@ public class AreaServiceTest extends BaseTest{
 	@Autowired
 	private AreaService areaService;
 	
+	@Autowired
+	private CacheService cacheService;
+	
 	@Test
 	public void testGetAreaList() {
 		List<Area> list = areaService.getAreaList();
 		System.out.println(list);
-		assertEquals(2, list.size());
+		cacheService.removeFromCache(AreaService.AREALISTKEY);
+		System.out.println(areaService.getAreaList());
 	}
 
 }

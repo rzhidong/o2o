@@ -31,7 +31,7 @@ public class DynamicDataSourceInterceptor implements Interceptor {
 	public Object intercept(Invocation invocation) throws Throwable {
 		// 判断是不是事务
 		boolean synchronizationActive = TransactionSynchronizationManager.isActualTransactionActive();
-
+		
 		// 获取sql中的变量参数
 		Object[] objects = invocation.getArgs();
 		// objects[0]信息是crud
@@ -60,7 +60,7 @@ public class DynamicDataSourceInterceptor implements Interceptor {
 			// 事务管理的用主库
 			lookupKey = DynamicDataSourceHolder.DB_MASTER;
 		}
-		logger.debug("设置方法[{}] use [{}] Strategy, SqlCommanType [{}]..", ms.getId(), lookupKey,
+		logger.debug("事务[{}]设置方法[{}] use [{}] Strategy, SqlCommanType [{}]..", synchronizationActive,ms.getId(), lookupKey,
 				ms.getSqlCommandType().name());
 		DynamicDataSourceHolder.setDbType(lookupKey);
 		return invocation.proceed();
