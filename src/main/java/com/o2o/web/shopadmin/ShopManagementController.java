@@ -71,10 +71,10 @@ public class ShopManagementController {
 	@ResponseBody
 	private Map<String, Object> getShopList(HttpServletRequest request) {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
-//		PersonInfo personInfo = new PersonInfo();
-//		personInfo.setUserId(1L);
-//		personInfo.setName("test");
-//		request.getSession().setAttribute("user", personInfo);
+		// PersonInfo personInfo = new PersonInfo();
+		// personInfo.setUserId(1L);
+		// personInfo.setName("test");
+		// request.getSession().setAttribute("user", personInfo);
 		PersonInfo user = (PersonInfo) request.getSession().getAttribute("user");
 
 		try {
@@ -82,6 +82,8 @@ public class ShopManagementController {
 			shopCondition.setOwner(user);
 			ShopExecution shopExecution = shopService.getShopList(shopCondition, 0, 100);
 			modelMap.put("shopList", shopExecution.getShopList());
+			// 列出店铺成功之后，将店铺放入session中作为权限验证依据，即该帐号只能操作它自己的店铺
+			request.getSession().setAttribute("shopList", shopExecution.getShopList());
 			modelMap.put("user", user);
 			modelMap.put("success", true);
 		} catch (Exception e) {
@@ -155,7 +157,7 @@ public class ShopManagementController {
 					shopExecution = shopService.modifyShop(shop, null);
 				} else {
 					ImageHolder thumbnail = new ImageHolder(shopImg.getOriginalFilename(), shopImg.getInputStream());
-					shopExecution = shopService.modifyShop(shop,thumbnail);
+					shopExecution = shopService.modifyShop(shop, thumbnail);
 				}
 				if (shopExecution.getState() == ShopStateEnum.SUCCESS.getState()) {
 					modelMap.put("success", true);
@@ -269,7 +271,7 @@ public class ShopManagementController {
 					if (shopList == null || shopList.size() == 0) {
 						shopList = new ArrayList<Shop>();
 					}
-					shopList.add(shop);
+					shopList.add(shopExecution.getShop());
 					request.getSession().setAttribute("shopList", shopList);
 				} else {
 					modelMap.put("seccess", false);
