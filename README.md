@@ -98,3 +98,14 @@ Lesson21
 
 Lesson22
 1、定期备份
+
+-------------------------------------
+Lesson1
+1、增加实体类及数据库表
+ tb_award
+ tb_user_award_map
+ tb_user_product_map
+ tb_user_shop_map
+ tb_product_sell_daily
+ tb_shop_auth_map
+2、增加商品积分
